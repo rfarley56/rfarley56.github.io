@@ -6,7 +6,7 @@ This repository will be for my CTI 110 class.
 
 <h1>About Me</h1>
 
-<2>My Interests</h2>
+<h2>My Interests</h2>
 
-<2>Websites I recommend</h2>
+<h2>Websites I recommend</h2>
 
