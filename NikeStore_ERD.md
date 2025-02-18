@@ -1,3 +1,4 @@
+```mermaid 
 erDiagram
     PRODUCT ||--|{ SALE : prodcutCode
         PRODUCT {
@@ -25,3 +26,4 @@ erDiagram
         float pricePerUnit
         float totalPrice
     }
+```
