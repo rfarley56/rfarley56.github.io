@@ -2,7 +2,6 @@
 function fetchGradeData(){
 	//This function will query the PostgreSQL database and return grade data
 	console.log("Fetching grade data...");
-}
 
 // Create a new request for HTTP data
 	let xhr = new XMLHttpRequest();
@@ -17,8 +16,9 @@ function fetchGradeData(){
 			if(xhr.readyState === xhr.DONE){
 			// Check if we're successful
 			if(xhr.status !== 200){
-				console.error('Could not get grades.
-					status: ${xhr.status}');
+				console.error(`Could not get grades.
+				Status: ${xhr.status}`);
+				
 			}
 			// And then call the function to update the HTML with our data
 			populateGradebook(JSON.parse(xhr.responseText));
@@ -26,27 +26,27 @@ function fetchGradeData(){
 	}.bind(this);
 	xhr.open("get", apiRoute, true);
 	xhr.send();
+}	
 	
 
 //TODO: Populate the table with grade data
 function populateGradebook(data) {
 	//This function will take the fetched grade data and popultate the table
 	console.log("Populating the gradebook with data:", data);
-	let-tableElm = document.getElementById("gradebook"); 
-	// Get the gradebook table element 
-	data.forEach(function(assignment) { // For each row of data we're passed in
-		let row = document.createElement("tr"); // create a table row element
-		let columns = []; // Handy place to stick the columns of information
-		columns.name = document.createElement('td'); // The first column's table data will be the name 
-		columns.name.appendChild(
+	let tableElm = document.getElementById("gradebook"); // Get the gradebook table element 
+		data.forEach(function(assignment) {
+			let row = document.createElement("tr"); // create a table row element
+			let columns = []; // Handy place to stick the columns of information
+			columns.name = document.createElement('td'); // The first column's table data will be the name 
+			columns.name.appendChild(
 			// Concatenate the full name:"last_name, first_name"
-			document.createTextNode(assignment.last_name + ", "+assignment.first_name)
+				document.createTextNode(assignment.last_name + ", " + assignment.first_name)
 			);
-		columns.grade = document.createElement('td'); // second column will be the grade 
-		columns.grade.appendChild(
+			columns.grade = document.createElement('td'); // second column will be the grade 
+			columns.grade.appendChild(
 		// Just put the name in text, you could be fancy and figure out the letter grade here
 		// with either a bunch of conditions, or a JavaScript "switch" statement
-			document.createTextNode(assignment.total_grade)
+				document.createTextNode(assignment.total_grade)
 		);
 
 		// Add the table data columns to the table row
@@ -59,6 +59,6 @@ function populateGradebook(data) {
 	
 //TODO REMOVE This
 // Call the stubs to demonstrate the workflow
-const gradeData = fetchGradeata();
-popupateGradebook(gradeData);
+const gradeData = fetchGradeData();
+populateGradebook(gradeData);
 // END REMOVE
